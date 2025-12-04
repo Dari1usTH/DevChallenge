@@ -256,3 +256,27 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
     renderProblems();
 });
+
+const adminBtn = document.getElementById('admin-btn');
+const isAdmin = localStorage.getItem('adminAuthenticated') === 'true';
+
+if (isAdmin) {
+    adminBtn.innerHTML = '<i class="fas fa-user-shield"></i> Admin ✓';
+    adminBtn.classList.add('logged-in');
+    adminBtn.title = 'Logged in as Admin';
+    
+    adminBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const logout = confirm('You are logged in as Admin. Do you want to logout?');
+        if (logout) {
+            localStorage.removeItem('adminAuthenticated');
+            localStorage.removeItem('user');
+            location.reload();
+        }
+    });
+} else {
+    adminBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = '../admin/admin.html';
+    });
+}
