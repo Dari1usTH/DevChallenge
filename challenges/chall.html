@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevChallenge - Problems</title>
+    <link rel="stylesheet" href="../dashboard/style.css">
+    <link rel="stylesheet" href="chall.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button id="back-btn" class="back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+            <h1><i class="fas fa-code"></i> DevChallenge</h1>
+            <p class="subtitle">Coding Problems</p>
+        </div>
+
+        <div class="search-filter">
+            <div class="search-box">                <input type="text" id="search-input" placeholder="Search problems...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-lang="all">All</button>
+                <button class="filter-btn" data-lang="c++">C++</button>
+                <button class="filter-btn" data-lang="python">Python</button>
+                <button class="filter-btn" data-lang="javascript">JavaScript</button>
+            </div>
+        </div>
+
+        <div id="problems-section" class="problems-section">
+            <div class="problems-grid" id="problems-grid"></div>
+        </div>
+
+        <div id="problem-detail-section" class="problem-detail-section" style="display: none;">
+            <div class="problem-header">
+                <h2 id="problem-title">Problem Title</h2>
+                <div class="problem-tags" id="problem-tags"></div>
+            </div>
+            <div class="problem-description" id="problem-description"></div>
+            <div class="code-editor">
+                <div class="editor-header">
+                    <h3>Code Editor</h3>
+                    <select id="language-select">
+                        <option value="javascript">JavaScript</option>
+                        <option value="python">Python</option>
+                        <option value="c++">C++</option>
+                    </select>
+                </div>
+                <div class="editor-content">
+                    <div class="code-display">
+                        <h4>Template Code:</h4>
+                        <pre><code id="code-template"></code></pre>
+                    </div>
+                    <div class="user-code">
+                        <h4>Your Solution:</h4>
+                        <textarea id="code-input" placeholder="Write your solution here..." spellcheck="false"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button id="run-btn" class="btn solve-btn">Test Code</button>
+                <button id="submit-btn" class="btn solve-btn">Submit Solution</button>
+            </div>
+            <div id="result-output" class="result-output"></div>
+        </div>
+    </div>
+
+    <script src="compiler.js"></script>
+    <script src="chall.js"></script>
+</body>
+</html>
