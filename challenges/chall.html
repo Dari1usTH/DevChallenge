@@ -20,8 +20,10 @@
             <p class="subtitle">Coding Problems</p>
         </div>
 
-        <div class="search-filter">
-            <div class="search-box">                <input type="text" id="search-input" placeholder="Search problems...">
+        <!-- Bara de căutare și filtre (AICI) -->
+        <div class="search-filter" id="search-filter-section">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search problems...">
                 <i class="fas fa-search"></i>
             </div>
             <div class="filter-buttons">
@@ -33,6 +35,7 @@
         </div>
 
         <div id="problems-section" class="problems-section">
+            <!-- DOAR grid-ul cu probleme, fără căutare duplicată -->
             <div class="problems-grid" id="problems-grid"></div>
         </div>
 
@@ -45,11 +48,14 @@
             <div class="code-editor">
                 <div class="editor-header">
                     <h3>Code Editor</h3>
-                    <select id="language-select">
+                    <!-- Selectul de limbaje ascuns -->
+                    <select id="language-select" style="display: none;">
                         <option value="javascript">JavaScript</option>
                         <option value="python">Python</option>
                         <option value="c++">C++</option>
                     </select>
+                    <!-- Afișare limbaj curent -->
+                    <div id="language-display"></div>
                 </div>
                 <div class="editor-content">
                     <div class="code-display">

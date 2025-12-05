@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const runBtn = document.getElementById('run-btn');
     const submitBtn = document.getElementById('submit-btn');
     const resultOutput = document.getElementById('result-output');
+    const searchFilterSection = document.getElementById('search-filter-section');
 
     let currentProblem = null;
     let filteredProblems = problems;
@@ -112,17 +113,19 @@ document.addEventListener('DOMContentLoaded', async function() {
         problemTags.innerHTML = problem.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
         problemDescription.textContent = problem.description;
         languageSelect.value = problem.language;
+        const languageDisplay = document.getElementById('language-display');
+        languageDisplay.textContent = problem.language.toUpperCase();
         codeTemplate.textContent = problem.template;
         codeInput.value = problem.template;
         resultOutput.textContent = '';
         problemsSection.style.display = 'none';
+        searchFilterSection.style.display = 'none'; 
         problemDetailSection.style.display = 'block';
-        
         updateCodeEditor();
     }
 
     function updateCodeEditor() {
-        const language = languageSelect.value;
+        const language = currentProblem ? currentProblem.language : languageSelect.value;
         const textarea = codeInput;
         
         if (language === 'python') {
@@ -138,6 +141,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         if (problemDetailSection.style.display === 'block') {
             problemDetailSection.style.display = 'none';
             problemsSection.style.display = 'block';
+            searchFilterSection.style.display = 'flex'; 
             renderProblems();
         } else {
             window.location.href = '../index.html';
@@ -171,8 +175,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         );
         renderProblems();
     });
-
-    languageSelect.addEventListener('change', updateCodeEditor);
 
     runBtn.addEventListener('click', async function() {
         if (!currentProblem) return;
