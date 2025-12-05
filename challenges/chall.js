@@ -267,12 +267,9 @@ if (isAdmin) {
     
     adminBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        const logout = confirm('You are logged in as Admin. Do you want to logout?');
-        if (logout) {
-            localStorage.removeItem('adminAuthenticated');
-            localStorage.removeItem('user');
-            location.reload();
-        }
+        localStorage.removeItem('adminAuthenticated');
+        localStorage.removeItem('user');
+        location.reload();
     });
 } else {
     adminBtn.addEventListener('click', function(e) {
