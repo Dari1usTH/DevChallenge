@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function() {
             searchFilterSection.style.display = 'flex';
             renderAlgorithms();
         } else {
-            window.location.href = '../index.html';
+            window.location.href = './index.html';
         }
     });
 
@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             localStorage.setItem('algorithmCode', code);
             localStorage.setItem('algorithmLanguage', languageSelect.value);
-            window.location.href = '../codedit/codedit.html';
+            window.location.href = './codedit/codedit.html';
         }
     });
 

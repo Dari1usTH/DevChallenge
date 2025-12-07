@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.setItem('adminAuthenticated', 'true');
                 showMessage('✓ Access granted! Redirecting to challenges...', 'success');
                 setTimeout(() => {
-                    window.location.href = '../challenges/chall.html';
+                    window.location.href = './challenges/chall.html';
                 }, 1500);
             } else {
                 showMessage('✗ Invalid password. Try again.', 'error');
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     backBtn.addEventListener('click', function() {
-        window.location.href = '../challenges/chall.html';
+        window.location.href = './challenges/chall.html';
     });
     
     function showMessage(message, type) {
