@@ -519,7 +519,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             searchFilterSection.style.display = 'flex'; 
             renderProblems();
         } else {
-            window.location.href = './index.html';
+            window.location.href = '../index.html';
         }
     });
     
@@ -651,6 +651,6 @@ if (isAdmin) {
 } else {
     adminBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        window.location.href = './admin/admin.html';
+        window.location.href = '../admin/admin.html';
     });
 }
