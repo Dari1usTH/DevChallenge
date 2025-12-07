@@ -41,15 +41,159 @@ document.addEventListener('DOMContentLoaded', function() {
                 right = mid - 1
         
         return -1`,
-            examples: `JavaScript Example:
-    const arr = [1, 3, 5, 7, 9, 11, 13, 15];
-    console.log(binarySearch(arr, 7));
-    console.log(binarySearch(arr, 10));
-
-    Python Example:
-    arr = [1, 3, 5, 7, 9, 11, 13, 15]
-    print(binary_search(arr, 7))
-    print(binary_search(arr, 10))`
+        },
+        {
+            id: 2,
+            title: "Prime Number Check",
+            description: "Check if a number is prime.",
+            tags: ["Math", "Numbers", "Basic"],
+            type: "math",
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1)",
+            codeJS: `function isPrime(n) {
+            if (n <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }`,
+            codePython: `def is_prime(n):
+            if n <= 1:
+                return False
+            for i in range(2, int(n ** 0.5) + 1):
+                if n % i == 0:
+                    return False
+            return True`,
+        },
+        {
+            id: 3,
+            title: "Linear Search",
+            description: "Find the position of a target value in an array by checking each element sequentially.",
+            tags: ["Searching", "Array", "Basic"],
+            type: "searching",
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1)",
+            codeJS: `function linearSearch(arr, target) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === target) {
+                    return i;
+                }
+            }
+            return -1;
+        }`,
+            codePython: `def linear_search(arr, target):
+            for i in range(len(arr)):
+                if arr[i] == target:
+                    return i
+            return -1`,
+        },
+        {
+            id: 4,
+            title: "Bubble Sort",
+            description: "Sort an array by repeatedly swapping adjacent elements if they are in the wrong order.",
+            tags: ["Sorting", "Array", "Basic"],
+            type: "sorting",
+            timeComplexity: "O(n*n)",
+            spaceComplexity: "O(1)",
+            codeJS: `function bubbleSort(arr) {
+            const n = arr.length;
+            for (let i = 0; i < n - 1; i++) {
+                for (let j = 0; j < n - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                    }
+                }
+            }
+            return arr;
+        }`,
+            codePython: `def bubble_sort(arr):
+            n = len(arr)
+            for i in range(n - 1):
+                for j in range(n - i - 1):
+                    if arr[j] > arr[j + 1]:
+                        arr[j], arr[j + 1] = arr[j + 1], arr[j]
+            return arr`,
+        },
+        {
+            id: 5,
+            title: "Euclidean Algorithm",
+            description: "Find the greatest common divisor of two numbers using Euclidean algorithm.",
+            tags: ["Math", "Numbers", "Algorithm"],
+            type: "math",
+            timeComplexity: "O(log (a or b))",
+            spaceComplexity: "O(1)",
+            codeJS: `function gcd(a, b) {
+            while (b !== 0) {
+                [a, b] = [b, a % b];
+            }
+            return Math.abs(a);
+        }`,
+            codePython: `def gcd(a, b):
+            while b != 0:
+                a, b = b, a % b
+            return abs(a)`,
+        },
+        {
+            id: 6,
+            title: "Palindrome Number Check",
+            description: "Check if a number reads the same forwards and backwards.",
+            tags: ["Numbers", "Math", "String"],
+            type: "math",
+            timeComplexity: "O(log n)",
+            spaceComplexity: "O(1)",
+            codeJS: `function isPalindromeNumber(num) {
+            if (num < 0) return false;
+            let original = num;
+            let reversed = 0;
+            
+            while (num > 0) {
+                reversed = reversed * 10 + (num % 10);
+                num = Math.floor(num / 10);
+            }
+            
+            return original === reversed;
+        }`,
+            codePython: `def is_palindrome_number(num):
+            if num < 0:
+                return False
+            original = num
+            reversed_num = 0
+            
+            while num > 0:
+                reversed_num = reversed_num * 10 + (num % 10)
+                num //= 10
+            
+            return original == reversed_num`,
+        },
+        {
+            id: 7,
+            title: "Count Divisors",
+            description: "Count how many divisors a number has, including 1 and itself.",
+            tags: ["Math", "Numbers", "Divisors"],
+            type: "math",
+            timeComplexity: "O(n)",
+            spaceComplexity: "O(1)",
+            codeJS: `function countDivisors(n) {
+            if (n <= 0) return 0;
+            let count = 0;
+            for (let i = 1; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) {
+                    count += (i * i === n) ? 1 : 2;
+                }
+            }
+            return count;
+        }`,
+            codePython: `def count_divisors(n):
+            if n <= 0:
+                return 0
+            count = 0
+            for i in range(1, int(n ** 0.5) + 1):
+                if n % i == 0:
+                    if i * i == n:
+                        count += 1
+                    else:
+                        count += 2
+            return count`,
         }
     ];
 
@@ -65,7 +209,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const spaceComplexity = document.getElementById('space-complexity');
     const languageSelect = document.getElementById('language-select');
     const algorithmCode = document.getElementById('algorithm-code');
-    const algorithmExamples = document.getElementById('algorithm-examples');
     const copyBtn = document.getElementById('copy-btn');
     const tryCodeBtn = document.getElementById('try-code-btn');
     const searchFilterSection = document.getElementById('search-filter-section');
@@ -111,7 +254,6 @@ document.addEventListener('DOMContentLoaded', function() {
         algorithmDescription.textContent = algorithm.description;
         timeComplexity.textContent = algorithm.timeComplexity;
         spaceComplexity.textContent = algorithm.spaceComplexity;
-        algorithmExamples.textContent = algorithm.examples;
 
         updateAlgorithmCode();
         

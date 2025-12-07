@@ -17,46 +17,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 }
             ]
         },
-        {
-            id: 2,
-            title: "Sum of Two Numbers",
-            description: "Write a function named 'sum_numbers' that takes two numbers as arguments and returns their sum.\n\nExamples:\nsum_numbers(1, 2) → 3\nsum_numbers(-5, 10) → 5",
-            tags: ["Python", "Easy"],
-            language: "python",
-            template: "def sum_numbers(a, b):\n    # Write your code here\n    return 0",
-            tests: [
-                { 
-                    call: "sum_numbers(1, 2)", 
-                    expected: "3",
-                    input: "1, 2"
-                },
-                { 
-                    call: "sum_numbers(-5, 10)", 
-                    expected: "5",
-                    input: "-5, 10"
-                }
-            ]
-        },
-        {
-            id: 3,
-            title: "Reverse String",
-            description: "Write a function named 'reverseString' that takes a string as argument and returns the reversed string.\n\nExamples:\nreverseString('hello') → 'olleh'\nreverseString('world') → 'dlrow'\n\nNote: Include necessary headers and use namespace std.",
-            tags: ["C++", "Medium"],
-            language: "c++",
-            template: "#include <string>\nusing namespace std;\n\nstring reverseString(string str) {\n    // Write your code here\n    return str;\n}",
-            tests: [
-                { 
-                    call: "reverseString('hello')", 
-                    expected: "olleh",
-                    input: "'hello'"
-                },
-                { 
-                    call: "reverseString('world')", 
-                    expected: "dlrow",
-                    input: "'world'"
-                }
-            ]
-        }
+        
     ];
 
     const backBtn = document.getElementById('back-btn');

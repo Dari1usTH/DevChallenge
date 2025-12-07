@@ -255,22 +255,6 @@
     background: #4caf50;
 }
 
-.algorithm-examples {
-    background: #f9f9f9;
-    border-radius: 10px;
-    padding: 25px;
-    margin-bottom: 30px;
-}
-
-.algorithm-examples h3 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
 .examples-content {
     background: white;
     padding: 20px;
