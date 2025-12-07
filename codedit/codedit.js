@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
     
     backBtn.addEventListener('click', function() {
-        window.location.href = './index.html';
+        window.location.href = '../index.html';
     });
     
     updateEditorPlaceholder();
