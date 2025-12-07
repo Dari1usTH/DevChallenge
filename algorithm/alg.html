@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevChallenge - Algorithms</title>
+    <link rel="stylesheet" href="../dashboard/style.css">
+    <link rel="stylesheet" href="alg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <button id="back-btn" class="back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+            </div>
+            <h1><i class="fas fa-cogs"></i> Basic Algorithms</h1>
+            <p class="subtitle">Learn and practice classic algorithms</p>
+        </div>
+
+        <div class="search-filter" id="search-filter-section">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search algorithms...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-type="all">All</button>
+                <button class="filter-btn" data-type="sorting">Sorting</button>
+                <button class="filter-btn" data-type="searching">Searching</button>
+                <button class="filter-btn" data-type="graph">Graph</button>
+                <button class="filter-btn" data-type="dynamic">Dynamic Programming</button>
+            </div>
+        </div>
+
+        <div id="algorithms-section" class="algorithms-section">
+            <div class="algorithms-grid" id="algorithms-grid"></div>
+        </div>
+
+        <div id="algorithm-detail-section" class="algorithm-detail-section" style="display: none;">
+            <div class="algorithm-header">
+                <h2 id="algorithm-title">Algorithm Title</h2>
+                <div class="algorithm-tags" id="algorithm-tags"></div>
+            </div>
+            
+            <div class="algorithm-description" id="algorithm-description"></div>
+            
+            <div class="algorithm-complexity">
+                <h3><i class="fas fa-chart-line"></i> Time Complexity</h3>
+                <div id="time-complexity" class="complexity-value"></div>
+                <h3><i class="fas fa-layer-group"></i> Space Complexity</h3>
+                <div id="space-complexity" class="complexity-value"></div>
+            </div>
+            
+            <div class="code-editor">
+                <div class="editor-header">
+                    <h3><i class="fas fa-code"></i> Implementation</h3>
+                    <div class="language-selector">
+                        <select id="language-select">
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="code-display">
+                    <pre><code id="algorithm-code"></code></pre>
+                    <button id="copy-btn" class="copy-btn">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
+            </div>
+            
+            <div class="algorithm-examples">
+                <h3><i class="fas fa-play-circle"></i> Example Usage</h3>
+                <div id="algorithm-examples" class="examples-content"></div>
+            </div>
+            
+            <div class="detail-actions">
+                <button id="try-code-btn" class="btn try-btn">
+                    <i class="fas fa-play"></i> Try This Code
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="alg.js"></script>
+</body>
+</html>
