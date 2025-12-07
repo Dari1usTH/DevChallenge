@@ -65,35 +65,6 @@ sys.stderr = io.StringIO()
         }
     }
 
-    async runCpp(code, input) {
-        try {
-            const hasInclude = code.includes('#include');
-            const hasFunction = code.includes('reverseString');
-            
-            if (!hasInclude || !hasFunction) {
-                return { success: false, error: 'Invalid C++ code structure' };
-            }
-
-            if (code.includes('reverse(str.begin(), str.end())') ||
-                code.includes('for') && code.includes('swap') ||
-                code.includes('while') && code.includes('swap')) {
-                let testStr = input || "'hello'";
-                testStr = testStr.replace(/'/g, '');
-                const reversed = testStr.split('').reverse().join('');
-                
-                return { 
-                    success: true, 
-                    output: reversed,
-                    note: 'Note: C++ execution is simulated. In production, use a backend compiler.' 
-                };
-            }
-            
-            return { success: false, error: 'Code does not contain reverse logic' };
-        } catch (error) {
-            return { success: false, error: error.message };
-        }
-    }
-
     async testSolution(code, language, testCases) {
         const results = [];
         
@@ -106,9 +77,6 @@ sys.stderr = io.StringIO()
                     break;
                 case 'python':
                     result = await this.testPython(code, testCase);
-                    break;
-                case 'c++':
-                    result = await this.testCpp(code, testCase);
                     break;
                 default:
                     result = { passed: false, message: `Unsupported language: ${language}` };
@@ -124,7 +92,6 @@ sys.stderr = io.StringIO()
         try {
             const testCode = `
 ${code}
-// Test execution
 try {
     const result = ${testCase.call};
     result;
@@ -165,7 +132,6 @@ try {
             const testCode = `
 ${code}
 
-# Test execution
 try:
     result = ${testCase.call}
     print(result)
@@ -196,35 +162,6 @@ except Exception as e:
             return { 
                 passed: false, 
                 message: `Python runtime error: ${error.message}` 
-            };
-        }
-    }
-
-    async testCpp(code, testCase) {
-        try {
-            const response = await this.runCpp(code, testCase.input);
-            
-            if (!response.success) {
-                return { 
-                    passed: false, 
-                    message: `C++ error: ${response.error}` 
-                };
-            }
-            
-            const output = String(response.output);
-            const expected = String(testCase.expected);
-            const passed = output === expected;
-            
-            return {
-                passed,
-                message: passed 
-                    ? `✓ Test passed (simulated): ${testCase.input} → ${output}` 
-                    : `✗ Test failed: expected "${expected}", got "${output}"`
-            };
-        } catch (error) {
-            return { 
-                passed: false, 
-                message: `C++ test error: ${error.message}` 
             };
         }
     }
